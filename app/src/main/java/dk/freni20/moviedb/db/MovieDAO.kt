@@ -13,10 +13,10 @@ interface MovieDAO {
     @Query("SELECT * FROM MOVIE WHERE :movieID=id")
     fun getMovie(movieID: Int) : Movie
 
-/*
+
     @Insert
     fun insertMovie(movie:Movie)
-
+/*
     @Delete
     fun deleteMovie(movie: Movie)
 

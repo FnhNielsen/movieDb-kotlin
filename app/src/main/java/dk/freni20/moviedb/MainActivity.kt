@@ -24,14 +24,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         movieDb = MovieDatabase.getAppDatabase(this)!!
 
-        //numbers = findViewById<EditText>(R.id.editTextNumber)
-        //attributes = findViewById(R.id.Attributes)
 
         if (movieDb.movieDAO().getAllMovies().isEmpty()){
-            var m1 = Movie(1,"The Wolf of Wall Street", "Financial crime is awesome",8.2, Date(2014,1,14))
-            var m2 = Movie(2,"Top Gun: Maverick,","Jets", 8.4, Date(2022,4,26))
-            var m3 = Movie(3,"Uncut Gems","So much stress", 7.4, Date(2019,12,25))
-            var m4 = Movie(4,"Sicario","Welcome to Juarez", 7.6, Date(2015,12,3))
+            var m1 = Movie(1,"The Wolf of Wall Street", "Financial crime is awesome",8.2)
+            var m2 = Movie(2,"Top Gun: Maverick,","Jets", 8.4)
+            var m3 = Movie(3,"Uncut Gems","So much stress", 7.4)
+            var m4 = Movie(4,"Sicario","Welcome to Juarez", 7.6)
 
             movieDb.movieDAO().insertMovie(m1)
             movieDb.movieDAO().insertMovie(m2)

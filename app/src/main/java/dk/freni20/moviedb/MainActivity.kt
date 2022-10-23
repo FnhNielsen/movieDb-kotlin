@@ -6,15 +6,14 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import dk.freni20.moviedb.adapters.MovieAdapter
 import dk.freni20.moviedb.db.Movie
-import dk.freni20.moviedb.db.MovieAdapter
-import dk.freni20.moviedb.db.MovieDatabase
-import java.util.*
+import dk.freni20.moviedb.db.MovieDataAccess
 import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var movieDb: MovieDatabase
+    lateinit var movieDb: MovieDataAccess
     lateinit var adapter: MovieAdapter
     private lateinit var numbers: EditText
     private lateinit var attributes: TextView
@@ -22,12 +21,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        movieDb = MovieDatabase.getAppDatabase(this)!!
+        movieDb = MovieDataAccess.getAppDatabase(this)!!
 
 
         if (movieDb.movieDAO().getAllMovies().isEmpty()){
             var m1 = Movie(1,"The Wolf of Wall Street", "Financial crime is awesome",8.2)
-            var m2 = Movie(2,"Top Gun: Maverick,","Jets", 8.4)
+            var m2 = Movie(2,"Top Gun: Maverick","Jets", 8.4)
             var m3 = Movie(3,"Uncut Gems","So much stress", 7.4)
             var m4 = Movie(4,"Sicario","Welcome to Juarez", 7.6)
 
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         var recyclerView: RecyclerView = findViewById(R.id.movie_view)
         recyclerView.setHasFixedSize(true)
-        var layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        var layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL,)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
     }

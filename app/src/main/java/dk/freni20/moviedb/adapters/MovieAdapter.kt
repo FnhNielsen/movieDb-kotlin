@@ -1,10 +1,11 @@
-package dk.freni20.moviedb.db
+package dk.freni20.moviedb.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import dk.freni20.moviedb.db.Movie
 import dk.freni20.moviedb.R
 
 class MovieAdapter(private val movieData : ArrayList<Movie>):RecyclerView.Adapter<MovieAdapter.ViewHolder>() {

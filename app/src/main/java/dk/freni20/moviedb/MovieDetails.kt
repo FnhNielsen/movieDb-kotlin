@@ -27,7 +27,7 @@ class MovieDetails : AppCompatActivity() {
         Thread {
             var movie = movieDb.movieDAO().getMovie(movieId)
             movieTitle.text = movie.movieTitle
-            moviePoster.setImageResource(movie.poster)
+            //moviePoster.setImageResource(movie.poster)
             description.text = movie.movieDescription
 
         }.start()

@@ -15,14 +15,12 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var movieDb: MovieDataAccess
     lateinit var adapter: MovieAdapter
-    private lateinit var numbers: EditText
-    private lateinit var attributes: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         movieDb = MovieDataAccess.getAppDatabase(this)!!
-
 
         if (movieDb.movieDAO().getAllMovies().isEmpty()){
             var m1 = Movie(1,"The Wolf of Wall Street", "Financial crime is awesome",8.2)
@@ -30,10 +28,10 @@ class MainActivity : AppCompatActivity() {
             var m3 = Movie(3,"Uncut Gems","So much stress", 7.4)
             var m4 = Movie(4,"Sicario","Welcome to Juarez", 7.6)
 
-            movieDb.movieDAO().insertMovie(m1)
-            movieDb.movieDAO().insertMovie(m2)
-            movieDb.movieDAO().insertMovie(m3)
-            movieDb.movieDAO().insertMovie(m4)
+            movieDb.movieDAO().addMovie(m1)
+            movieDb.movieDAO().addMovie(m2)
+            movieDb.movieDAO().addMovie(m3)
+            movieDb.movieDAO().addMovie(m4)
         }
 
         var movies : ArrayList<Movie> = arrayListOf()

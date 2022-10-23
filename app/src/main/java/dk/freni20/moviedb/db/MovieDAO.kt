@@ -14,7 +14,7 @@ interface MovieDAO {
 
 
     @Insert
-    fun insertMovie(movie:Movie)
+    fun addMovie(movie:Movie)
 /*
     @Delete
     fun deleteMovie(movie: Movie)

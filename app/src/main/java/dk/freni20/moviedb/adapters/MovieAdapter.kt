@@ -8,11 +8,18 @@ import androidx.recyclerview.widget.RecyclerView
 import dk.freni20.moviedb.db.Movie
 import dk.freni20.moviedb.R
 
-class MovieAdapter(private val movieData : ArrayList<Movie>):RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(private val movies : ArrayList<Movie>):RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+    var itemClickEvent: ((Movie) -> Unit)? = null
 
     inner class ViewHolder(item : View): RecyclerView.ViewHolder(item){
-        val movieTitle : TextView = item.findViewById(R.id.movieTitle)
-        val imdbScore : TextView = item.findViewById(R.id.IMDB_Score)
+        var movieTitle : TextView = item.findViewById(R.id.movieTitle)
+        var imdbScore : TextView = item.findViewById(R.id.IMDB_Score)
+
+        init {
+            itemView.setOnClickListener {
+                itemClickEvent?.invoke(movies[adapterPosition])
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,11 +29,11 @@ class MovieAdapter(private val movieData : ArrayList<Movie>):RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.movieTitle.text = movieData[position].movieTitle
-        holder.imdbScore.text = movieData[position].IMDB_Score.toString()
+        holder.movieTitle.text = movies[position].movieTitle
+        holder.imdbScore.text = movies[position].IMDB_Score.toString()
     }
 
     override fun getItemCount(): Int {
-        return movieData.size
+        return movies.size
     }
 }

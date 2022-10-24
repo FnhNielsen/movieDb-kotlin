@@ -16,7 +16,7 @@ class MovieDetails : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.moviedetails)
+        setContentView(R.layout.activity_movie_details)
         movieDb = MovieDataAccess.getAppDatabase(this)!!
 
         //movieTitle = findViewById(R.id.movieDetailTitle)

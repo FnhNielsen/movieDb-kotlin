@@ -16,7 +16,7 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity() {
     lateinit var movieDb: MovieDataAccess
     lateinit var adapter: MovieAdapter
-    var movies : ArrayList<Movie> = arrayListOf()
+    private var movies : ArrayList<Movie> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,15 +25,17 @@ class MainActivity : AppCompatActivity() {
 
         Thread{
             if (movieDb.movieDAO().getAllMovies().isEmpty()){
-                var m1 = Movie(1,"The Wolf of Wall Street", "Financial crime is awesome",8.2,)
-                var m2 = Movie(2,"Top Gun: Maverick","Jets", 8.4)
-                var m3 = Movie(3,"Uncut Gems","So much stress", 7.4)
-                var m4 = Movie(4,"Sicario","Welcome to Juarez", 7.6)
+                var m1 = Movie(0,"The Wolf of Wall Street", "Financial crime is awesome",8.2,R.drawable.wolfofwallst)
+                var m2 = Movie(1,"Top Gun: Maverick","Jets", 8.4, R.drawable.topgun)
+                var m3 = Movie(2,"Uncut Gems","So much stress", 7.4, R.drawable.uncutgems)
+                var m4 = Movie(3,"Sicario","Welcome to Juarez", 7.6, R.drawable.sicario)
+                var m5 = Movie(4,"Inception","Never falling asleep again", 8.8, R.drawable.inception)
 
                 movieDb.movieDAO().addMovie(m1)
                 movieDb.movieDAO().addMovie(m2)
                 movieDb.movieDAO().addMovie(m3)
                 movieDb.movieDAO().addMovie(m4)
+                movieDb.movieDAO().addMovie(m5)
             }
             movies.addAll(movieDb.movieDAO().getAllMovies())
         }.start()

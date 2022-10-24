@@ -12,7 +12,7 @@ data class Movie(
     @ColumnInfo(name = "movieTitle") val movieTitle: String,
     @ColumnInfo(name = "movieDescription") val movieDescription: String,
     @ColumnInfo(name = "IMDB_Score") val IMDB_Score: Double,
-//    @DrawableRes
-//    @ColumnInfo(name = "poster") val poster: Int
+    @DrawableRes
+    @ColumnInfo(name = "poster") val poster: Int
 )
 
